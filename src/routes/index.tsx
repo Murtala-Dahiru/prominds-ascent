@@ -1,26 +1,48 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/home/Hero";
+import { StatsStrip } from "@/components/home/StatsStrip";
+import { DivisionsGrid } from "@/components/home/DivisionsGrid";
+import { WhyUs } from "@/components/home/WhyUs";
+import { ParentPreview } from "@/components/home/ParentPreview";
+import { PricingCards } from "@/components/home/PricingCards";
+import { Testimonials } from "@/components/home/Testimonials";
+import { TutorsStrip } from "@/components/home/TutorsStrip";
+import { FaqAccordion } from "@/components/home/FaqAccordion";
+import { CtaBand } from "@/components/home/CtaBand";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "ProMinds Education Group — Premium Academic Excellence" },
+      {
+        name: "description",
+        content:
+          "Elite tutorials, career services, academic document support, and parent education — built for measurable student success.",
+      },
+      { property: "og:title", content: "ProMinds Education Group" },
+      {
+        property: "og:description",
+        content:
+          "Building academic excellence for the next generation — premium tutorials, career services, and parent education.",
+      },
+    ],
+  }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+      <StatsStrip />
+      <DivisionsGrid />
+      <WhyUs />
+      <ParentPreview />
+      <PricingCards />
+      <Testimonials />
+      <TutorsStrip />
+      <FaqAccordion />
+      <CtaBand />
+    </>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
