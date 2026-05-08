@@ -9,38 +9,155 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DivisionsTutorialsRouteImport } from './routes/divisions.tutorials'
+import { Route as DivisionsParentsRouteImport } from './routes/divisions.parents'
+import { Route as DivisionsCareerRouteImport } from './routes/divisions.career'
+import { Route as DivisionsAcademicSupportRouteImport } from './routes/divisions.academic-support'
 
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DivisionsTutorialsRoute = DivisionsTutorialsRouteImport.update({
+  id: '/divisions/tutorials',
+  path: '/divisions/tutorials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DivisionsParentsRoute = DivisionsParentsRouteImport.update({
+  id: '/divisions/parents',
+  path: '/divisions/parents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DivisionsCareerRoute = DivisionsCareerRouteImport.update({
+  id: '/divisions/career',
+  path: '/divisions/career',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DivisionsAcademicSupportRoute =
+  DivisionsAcademicSupportRouteImport.update({
+    id: '/divisions/academic-support',
+    path: '/divisions/academic-support',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/divisions/academic-support': typeof DivisionsAcademicSupportRoute
+  '/divisions/career': typeof DivisionsCareerRoute
+  '/divisions/parents': typeof DivisionsParentsRoute
+  '/divisions/tutorials': typeof DivisionsTutorialsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/divisions/academic-support': typeof DivisionsAcademicSupportRoute
+  '/divisions/career': typeof DivisionsCareerRoute
+  '/divisions/parents': typeof DivisionsParentsRoute
+  '/divisions/tutorials': typeof DivisionsTutorialsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/divisions/academic-support': typeof DivisionsAcademicSupportRoute
+  '/divisions/career': typeof DivisionsCareerRoute
+  '/divisions/parents': typeof DivisionsParentsRoute
+  '/divisions/tutorials': typeof DivisionsTutorialsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
+    | '/divisions/academic-support'
+    | '/divisions/career'
+    | '/divisions/parents'
+    | '/divisions/tutorials'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
+    | '/divisions/academic-support'
+    | '/divisions/career'
+    | '/divisions/parents'
+    | '/divisions/tutorials'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
+    | '/divisions/academic-support'
+    | '/divisions/career'
+    | '/divisions/parents'
+    | '/divisions/tutorials'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CareersRoute: typeof CareersRoute
+  ContactRoute: typeof ContactRoute
+  DivisionsAcademicSupportRoute: typeof DivisionsAcademicSupportRoute
+  DivisionsCareerRoute: typeof DivisionsCareerRoute
+  DivisionsParentsRoute: typeof DivisionsParentsRoute
+  DivisionsTutorialsRoute: typeof DivisionsTutorialsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +165,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/divisions/tutorials': {
+      id: '/divisions/tutorials'
+      path: '/divisions/tutorials'
+      fullPath: '/divisions/tutorials'
+      preLoaderRoute: typeof DivisionsTutorialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/divisions/parents': {
+      id: '/divisions/parents'
+      path: '/divisions/parents'
+      fullPath: '/divisions/parents'
+      preLoaderRoute: typeof DivisionsParentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/divisions/career': {
+      id: '/divisions/career'
+      path: '/divisions/career'
+      fullPath: '/divisions/career'
+      preLoaderRoute: typeof DivisionsCareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/divisions/academic-support': {
+      id: '/divisions/academic-support'
+      path: '/divisions/academic-support'
+      fullPath: '/divisions/academic-support'
+      preLoaderRoute: typeof DivisionsAcademicSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CareersRoute: CareersRoute,
+  ContactRoute: ContactRoute,
+  DivisionsAcademicSupportRoute: DivisionsAcademicSupportRoute,
+  DivisionsCareerRoute: DivisionsCareerRoute,
+  DivisionsParentsRoute: DivisionsParentsRoute,
+  DivisionsTutorialsRoute: DivisionsTutorialsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
