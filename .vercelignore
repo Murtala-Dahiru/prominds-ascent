@@ -1,8 +1,4 @@
 .git
-.gitignore
 node_modules
-dist
-build
 .env
 .env.local
-.vercelignore
